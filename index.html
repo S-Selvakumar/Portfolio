@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Selvakumar S — B.Tech IT student and aspiring software developer. Portfolio featuring Java, DSA, and web development projects." name="description"/>
+<title>Selvakumar S | Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&amp;family=Rajdhani:wght@500;600;700&amp;family=Space+Mono:wght@400;700&amp;family=Work+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{--ink:#070b18;--panel:rgba(17,25,50,.72);--line:rgba(161,181,255,.16);--muted:#a9b4cf;--cyan:#52b6ff;--violet:#9677ff}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{width:100%;margin:0;background:#070b18;color:#f7f8ff;font-family:"Work Sans",sans-serif}
+    .app-shell{width:100%;min-height:calc(100 * min(var(--vh,1vh),1vh));overflow:hidden;background:radial-gradient(circle at 8% 8%,rgba(59,130,246,.16),transparent 27rem),radial-gradient(circle at 94% 26%,rgba(139,92,246,.16),transparent 27rem),#070b18}
+    .mono{font-family:"Space Mono",monospace}.nav-glass{background:rgba(7,11,24,.8);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .glass-card{background:linear-gradient(140deg,rgba(25,35,69,.74),rgba(11,17,37,.78));border:1px solid var(--line);box-shadow:0 18px 55px rgba(0,0,0,.2);transition:.25s}
+    .glass-card:hover{border-color:rgba(0,240,255,.35);box-shadow:0 18px 55px rgba(0,0,0,.25),0 0 26px rgba(0,240,255,.12);transform:translateY(-3px)}
+    .page-panel{display:none;animation:rise .55s ease both}.page-panel.active{display:block}.gradient-text{background:linear-gradient(100deg,#f5f7ff 10%,#71c5ff 55%,#b49bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav-item{color:#a9b4cf;transition:.2s;border-radius:6px;padding:.5rem 1.1rem!important;margin:.2rem}
+    .nav-item:hover{color:#fff;background:rgba(0,240,255,.08)}
+    .nav-item.active{color:#05070f;background:linear-gradient(120deg,var(--neon-cyan),var(--neon-violet));box-shadow:0 0 16px rgba(0,240,255,.4);font-weight:700}
+    @media(min-width:768px){#nav-links{border:1px solid rgba(0,240,255,.28);border-radius:999px;background:rgba(7,14,28,.6);box-shadow:0 0 20px rgba(0,240,255,.08);padding:.35rem}}
+    .glow-button{box-shadow:0 12px 32px rgba(85,122,255,.25);transition:transform .2s,box-shadow .2s}.glow-button:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(115,93,255,.38)}
+    .badge{border:1px solid rgba(112,167,255,.22);background:rgba(80,130,255,.1);color:#c9e8ff}.skill-pill{border:1px solid rgba(170,147,255,.2);background:rgba(145,117,255,.12);color:#ddd6fe}
+    .terminal{background:linear-gradient(145deg,rgba(18,29,61,.96),rgba(6,10,23,.98));border:1px solid rgba(117,154,255,.28);box-shadow:0 30px 80px rgba(33,70,170,.22)}
+    .cursor{display:inline-block;width:.55rem;height:1.1rem;vertical-align:middle;background:#65c6ff;animation:blink 1s steps(2,start) infinite}
+    .timeline-line{background:linear-gradient(#62bcff,#9677ff,transparent)} .certificate-placeholder{background:linear-gradient(135deg,rgba(82,182,255,.16),rgba(150,119,255,.2))}
+    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}@keyframes blink{50%{opacity:0}}
+    @media(prefers-reduced-motion:reduce){.page-panel,.cursor{animation:none}.glow-button{transition:none}}
+  
+    :root{--neon-cyan:#00f0ff;--neon-magenta:#ff2fd6;--neon-violet:#9d4bff}
+    h1,h2{font-family:"Rajdhani","Work Sans",sans-serif;letter-spacing:.02em}
+    h1{font-weight:700;letter-spacing:.03em}
+    h1.gradient-text{text-shadow:0 0 30px rgba(101,198,255,.35)}
+    .mono{letter-spacing:.03em}
+    #home-title{background:linear-gradient(100deg,#f5f7ff 10%,#71c5ff 55%,#b49bff);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(101,198,255,.35)}
+    .app-shell{position:relative}
+    .app-shell::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;
+      background-image:repeating-linear-gradient(0deg,#fff 0px,#fff 1px,transparent 1px,transparent 3px);
+      mix-blend-mode:overlay}
+    .gradient-text{text-shadow:0 0 24px rgba(82,182,255,.25)}
+    .hud-box{position:relative;margin-bottom:2.5rem;padding:1.75rem 2rem;
+      border:1px solid rgba(0,240,255,.28);
+      background:linear-gradient(160deg,rgba(0,26,42,.5),rgba(10,6,30,.55));
+      box-shadow:inset 0 0 40px rgba(0,240,255,.05)}
+    .hud-box::before,.hud-box::after{content:'';position:absolute;width:22px;height:22px;pointer-events:none}
+    .hud-box::before{top:-1px;left:-1px;border-top:2px solid var(--neon-cyan);border-left:2px solid var(--neon-cyan);
+      box-shadow:-2px -2px 12px rgba(0,240,255,.5)}
+    .hud-box::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--neon-magenta);border-right:2px solid var(--neon-magenta);
+      box-shadow:2px 2px 12px rgba(255,47,214,.45)}
+    .hud-box.hud-box-tight{padding-bottom:1.1rem}
+    .hud-box>p[data-template-id$="-kicker"]{color:var(--neon-cyan);letter-spacing:.24em}
+    .avatar-frame{position:relative;width:230px;height:230px;margin:0 auto;isolation:isolate}
+    .avatar-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;
+      border:3px solid rgba(6,12,26,.9);position:relative;z-index:2}
+    .avatar-frame::before{content:'';position:absolute;inset:-9px;border-radius:50%;z-index:1;
+      background:conic-gradient(from 0deg,var(--neon-cyan),var(--neon-violet),var(--neon-magenta),var(--neon-cyan));
+      filter:blur(4px);opacity:.75;animation:spin 7s linear infinite}
+    .avatar-frame::after{content:'';position:absolute;inset:-9px;border-radius:50%;z-index:1;
+      box-shadow:0 0 40px rgba(0,240,255,.35),0 0 70px rgba(157,75,255,.2)}
+    .status-badge{position:absolute;bottom:2px;right:2px;z-index:3;background:#05070f;
+      border:1px solid var(--neon-cyan);color:var(--neon-cyan);font-family:"Space Mono",monospace;
+      font-size:.65rem;letter-spacing:.08em;padding:.3rem .7rem;border-radius:999px;
+      box-shadow:0 0 12px rgba(0,240,255,.5)}
+    .status-badge .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--neon-cyan);
+      margin-right:.35rem;box-shadow:0 0 6px var(--neon-cyan)}
+    .brand-box{border:1px solid rgba(0,240,255,.35);border-radius:999px;padding:.5rem 1.1rem!important;box-shadow:0 0 14px rgba(0,240,255,.15)}
+    .cta-box{border:1px solid rgba(157,75,255,.3);border-radius:14px;padding:1.1rem;background:rgba(12,10,30,.35)}
+    .stats-box{border:1px solid rgba(0,240,255,.25);border-radius:14px;padding:.9rem;background:rgba(6,14,28,.4);box-shadow:inset 0 0 24px rgba(0,240,255,.05)}
+    .canva-panel{position:relative;border:1px solid rgba(157,75,255,.28);
+      background:radial-gradient(circle at 30% 20%,rgba(82,182,255,.1),transparent 60%),
+                 linear-gradient(150deg,rgba(20,16,45,.6),rgba(8,10,26,.75));
+      box-shadow:0 0 40px rgba(150,119,255,.1),inset 0 0 30px rgba(0,240,255,.04)}
+    .badge{transition:.2s}
+    .skill-pill{transition:.2s}
+    .skill-pill:hover{border-color:rgba(0,240,255,.5);box-shadow:0 0 14px rgba(0,240,255,.25);transform:translateY(-2px)}
+    .badge:hover{border-color:rgba(0,240,255,.5);box-shadow:0 0 14px rgba(0,240,255,.25);transform:translateY(-2px)}
+    .stat-tile{transition:.2s}
+    .stat-tile:hover{border-color:rgba(0,240,255,.35);background:rgba(0,240,255,.06);transform:translateY(-2px)}
+    .stat-tile i{width:16px;height:16px}
+    .intro-accent{position:relative}
+    .intro-accent::before{content:'';position:absolute;top:0;left:1.5rem;right:1.5rem;height:3px;
+      background:linear-gradient(90deg,var(--neon-cyan),var(--neon-violet),var(--neon-magenta));
+      border-radius:0 0 3px 3px;box-shadow:0 2px 10px rgba(0,240,255,.35)}
+    .timeline-dot{background:linear-gradient(135deg,var(--neon-cyan),var(--neon-violet));
+      box-shadow:0 0 14px rgba(0,240,255,.65)}
+    .timeline-line{width:2px!important;box-shadow:0 0 10px rgba(157,75,255,.35)}
+    .avatar-float{animation:float 5s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .brand-font{font-family:"Orbitron","Rajdhani",sans-serif;letter-spacing:.04em}
+    .page-nav-btn{display:inline-flex;align-items:center;gap:.6rem;border:1px solid rgba(0,240,255,.35);
+      border-radius:999px;padding:.85rem 1.7rem;
+      background:linear-gradient(120deg,rgba(0,240,255,.1),rgba(157,75,255,.1));
+      color:#e8f6ff;font-weight:600;transition:.2s}
+    .page-nav-btn:hover{border-color:rgba(0,240,255,.6);box-shadow:0 0 18px rgba(0,240,255,.3);transform:translateX(4px)}
+    .page-nav-btn i{width:18px;height:18px}
+    .link-box{display:inline-flex;align-items:center;gap:.4rem;border:1px solid rgba(0,240,255,.3);
+      border-radius:8px;padding:.5rem 1.05rem;font-weight:600;font-size:.875rem;
+      color:#e8f6ff!important;text-decoration:none!important;transition:.2s}
+    .link-box:hover{border-color:rgba(0,240,255,.55);box-shadow:0 0 12px rgba(0,240,255,.25);transform:translateY(-2px)}
+    .page-nav-btn.primary{background:linear-gradient(120deg,);
+      color:#05070f;border-color:transparent;box-shadow:0 0 8px rgba(0,240,255,.15)}
+    .page-nav-btn.primary:hover{box-shadow:0 0 14px rgba(0,240,255,.3);transform:translateY(-2px)}
+    .menu-toggle-btn{border:1px solid rgba(0,240,255,.35);border-radius:8px;padding:.5rem;
+      color:var(--neon-cyan);background:rgba(0,240,255,.06);transition:.2s}
+    .menu-toggle-btn:hover{border-color:rgba(0,240,255,.6);box-shadow:0 0 14px rgba(0,240,255,.3)}
+    .pill-link{display:flex;align-items:center;gap:.85rem;border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);border-radius:12px;padding:.7rem 1.1rem;
+      font-weight:600;font-size:.9rem;color:#e8f6ff!important;text-decoration:none!important;
+      transition:.2s;max-width:340px}
+    .pill-link:hover{border-color:rgba(0,240,255,.4);box-shadow:0 0 14px rgba(0,240,255,.2);transform:translateX(4px)}
+    .pill-icon{display:flex;align-items:center;justify-content:center;width:30px;height:30px;
+      border-radius:50%;flex-shrink:0}
+    .pill-icon i{width:16px;height:16px;color:#fff}
+    .page-nav-wrap{margin-top:3rem;display:flex;justify-content:center}
+    .wave-letter{display:inline-block;animation:wave-bounce 1.4s ease-in-out infinite}
+    @keyframes wave-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+    @media(prefers-reduced-motion:reduce){.wave-letter{animation:none}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){.avatar-frame::before{animation:none}.app-shell::after{display:none}.avatar-float{animation:none}}
+
+    /* ===== NEON NAME SHINE ===== */
+    .glitch-name{
+      position:relative;
+      display:inline-block;
+      background:linear-gradient(100deg,#8fd8ff 0%,#ffffff 12%,#8fd8ff 24%,#b49bff 40%,#8fd8ff 60%,#ffffff 72%,#8fd8ff 84%,#b49bff 100%);
+      background-size:220% 100%;
+      -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 0 6px rgba(0,240,255,.55)) drop-shadow(0 0 16px rgba(157,75,255,.35));
+      animation:neon-sweep 3.2s linear infinite, neon-flicker 3.2s linear infinite}
+    .glitch-name.glitch-sm{filter:drop-shadow(0 0 4px rgba(0,240,255,.55)) drop-shadow(0 0 9px rgba(157,75,255,.35))}
+    @keyframes neon-sweep{
+      0%{background-position:0% 0}
+      100%{background-position:-220% 0}}
+    @keyframes neon-flicker{
+      0%,93%{opacity:1}
+      94%{opacity:.4}
+      95%{opacity:1}
+      96%{opacity:.55}
+      97%,100%{opacity:1}}
+    @media(prefers-reduced-motion:reduce){.glitch-name{animation:none}}
+</style>
+</head>
+<body data-template-id="__page-root">
+<div class="app-shell">
+<header class="nav-glass sticky top-0 z-50 w-full">
+<nav aria-label="Primary navigation" class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8"><button class="canva-button brand-box brand-font text-left font-bold tracking-tight" data-page="home" data-template-id="nav-brand" type="button"><span class="glitch-name glitch-sm" data-text="Selvakumar S">Selvakumar S</span></button> <button aria-expanded="false" aria-label="Open navigation menu" class="menu-toggle-btn md:hidden focus:outline-none" id="menu-toggle" type="button"><i data-lucide="menu"></i></button>
+<div class="hidden absolute left-0 top-full w-full border-b border-slate-800 bg-[#090e20] px-5 py-4 md:static md:flex md:w-auto md:items-center md:gap-4 md:border-0 md:bg-transparent md:p-0" id="nav-links"><button class="canva-button nav-item active block py-2 text-sm" data-page="home" data-template-id="nav-home">Home</button> <button class="canva-button nav-item block py-2 text-sm" data-page="about" data-template-id="nav-about">About</button> <button class="canva-button nav-item block py-2 text-sm" data-page="skills" data-template-id="nav-skills">Skills</button> <button class="canva-button nav-item block py-2 text-sm" data-page="projects" data-template-id="nav-projects">Projects</button> <button class="canva-button nav-item block py-2 text-sm" data-page="experience" data-template-id="nav-experience">Experience</button> <button class="canva-button nav-item block py-2 text-sm" data-page="certificates" data-template-id="nav-certificates">Certificates</button> <button class="canva-button nav-item block py-2 text-sm" data-page="achievements" data-template-id="nav-achievements">Achievements</button> <button class="canva-button nav-item block py-2 text-sm" data-page="profiles" data-template-id="nav-profiles">Profiles</button> <button class="canva-button nav-item block py-2 text-sm" data-page="contact" data-template-id="nav-contact">Contact</button>
+</div>
+</nav>
+</header>
+<main class="w-full">
+<section aria-labelledby="home-title" class="page-panel active" id="home">
+<div class="mx-auto grid max-w-7xl items-stretch gap-12 px-5 py-16 lg:grid-cols-[1.05fr_.95fr] lg:px-8 lg:py-24">
+<div class="flex flex-col justify-center gap-6">
+<div class="hud-box"><p class="canva-text mono mb-5 text-sm font-bold uppercase tracking-[.18em]" data-template-id="home-kicker">Welcome to my portfolio</p>
+<h1 class="canva-text max-w-3xl text-5xl font-bold leading-tight sm:text-6xl" data-template-id="home-title" id="home-title">Hi, I'm <span class="brand-font">Selvakumar S</span></h1>
+<p class="canva-text mt-6 text-xl font-semibold" data-template-id="home-subtitle">B.Tech Information Technology Student &amp; Aspiring Software Developer</p>
+<p class="canva-text mt-5 max-w-2xl text-lg leading-8" data-template-id="home-description">I build clean, functional software with Java, C++, and modern web technologies. I enjoy solving problems, building practical projects, and continuously improving my technical skills.</p>
+</div>
+<div class="canva-card glass-card intro-accent rounded-2xl p-6 sm:p-7" data-template-id="home-techstack-card">
+<p class="canva-text mono text-xs font-bold uppercase tracking-[.2em]" style="color:var(--neon-cyan)" data-template-id="home-techstack-label">Tech Stack</p>
+<div class="mt-4 flex flex-wrap gap-2.5">
+<span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">Java</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">C++</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">C</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">HTML</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">CSS</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">JavaScript</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">DSA</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">Git &amp; GitHub</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">Firebase</span><span class="canva-tag skill-pill rounded-full px-3.5 py-1.5 text-sm font-medium">Flutter</span>
+</div>
+</div>
+</div>
+<div class="flex h-full flex-col items-center gap-8"><div class="avatar-frame avatar-float"><img alt="Selvakumar S" src="edit-260kb.jpeg"/><span class="status-badge"><span class="dot"></span> AVAILABLE</span></div><aside aria-label="Developer profile terminal" class="terminal flex flex-1 flex-col rounded-2xl p-6 sm:p-8">
+<div class="mb-8 flex items-center gap-2">
+<span class="h-3 w-3 rounded-full bg-red-400"></span><span class="h-3 w-3 rounded-full bg-amber-300"></span><span class="h-3 w-3 rounded-full bg-emerald-400"></span><span class="canva-text mono ml-3 text-xs" data-template-id="terminal-label">selvakumar@sk:~$</span>
+</div>
+<div class="mono text-sm leading-8 text-slate-300 sm:text-base">
+<p><span class="text-blue-300">const</span> developer = {</p>
+<p class="pl-5"><span class="text-violet-300">name:</span> <span class="text-emerald-300">"Selvakumar S"</span>,</p>
+<p class="pl-5"><span class="text-violet-300">role:</span> <span class="text-emerald-300">"B.Tech IT Student"</span>,</p> 
+<p class="pl-5 code-line"><span class="text-violet-300">focus:</span> <span class="text-emerald-300">"Java + DSA + Web"</span>,</p>
+<p class="pl-5"><span class="text-violet-300">availableFor:</span> <span class="text-emerald-300">"internships"</span>,</p>
+<p class="pl-5"><span class="text-violet-300">problemsSolved:</span> <span class="text-amber-300">500</span>+,</p>
+<p class="pl-5"><span class="text-violet-300">mindset:</span> <span class="text-emerald-300">"Build. Learn. Improve."</span></p>
+<p>};</p>
+<p class="mt-6 text-blue-300">developer.readyToBuild()<span class="cursor"></span></p>
+</div>
+</aside></div>
+</div>
+<div class="mx-auto max-w-7xl px-5 pb-16 lg:px-8">
+<article class="canva-card glass-card intro-accent rounded-2xl p-7 sm:p-10" data-template-id="home-intro-card">
+<div class="grid gap-8 lg:grid-cols-[1.1fr_.9fr]">
+<div>
+<h2 class="canva-text gradient-text text-3xl font-bold" data-template-id="home-intro-title">A Little About Me</h2>
+<p class="canva-text mt-5 max-w-2xl text-lg leading-8" data-template-id="home-intro-copy">I'm currently pursuing my B.Tech in Information Technology, with a strong focus on Java, Data Structures &amp; Algorithms, and full-stack web development. I enjoy turning ideas into working applications and I'm always looking for the next challenge to grow as a developer.</p>
+</div>
+<div class="stats-box grid grid-cols-2 gap-3">
+<div class="stat-tile rounded-xl border border-white/10 bg-white/5 p-4">
+<i class="text-blue-300" data-lucide="graduation-cap"></i>
+<p class="canva-text mt-2 text-sm font-semibold" data-template-id="stat-one">B.Tech IT Student</p>
+</div>
+<div class="stat-tile rounded-xl border border-white/10 bg-white/5 p-4">
+<i class="text-violet-300" data-lucide="folder-code"></i>
+<p class="canva-text mt-2 text-sm font-semibold" data-template-id="stat-two">4+ Projects Built</p>
+</div>
+<div class="stat-tile rounded-xl border border-white/10 bg-white/5 p-4">
+<i class="text-cyan-300" data-lucide="sigma"></i>
+<p class="canva-text mt-2 text-sm font-semibold" data-template-id="stat-three">200+ DSA Problems Solved</p>
+</div>
+<div class="stat-tile rounded-xl border border-white/10 bg-white/5 p-4">
+<i class="text-blue-300" data-lucide="sparkles"></i>
+<p class="canva-text mt-2 text-sm font-semibold" data-template-id="stat-four">Always Learning</p>
+</div>
+</div>
+</div>
+</article>
+<div class="canva-panel mt-10 rounded-2xl p-8 text-center sm:p-12" data-template-id="home-cta-panel">
+<h2 class="canva-text text-3xl font-bold" data-template-id="home-cta-title">Let's Build Something Together</h2>
+<p class="canva-text mt-3" data-template-id="home-cta-copy">Open to internships, collaborations, and interesting problems to solve.</p>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="contact" data-template-id="home-cta-button" type="button">Contact Me <i data-lucide="arrow-right"></i></button></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="about-title" class="page-panel" id="about">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="about-kicker">Get to know me</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="about-title" id="about-title">About Me</h1><p class="canva-text mt-4 text-xl" data-template-id="about-subtitle">Developer, problem-solver, and lifelong learner</p></div>
+<div class="mt-10 grid gap-7 lg:grid-cols-[1.2fr_.8fr]">
+<div>
+<p class="canva-text text-lg leading-8" data-template-id="about-copy-one">I'm <span class="brand-font">Selvakumar S</span>, a B.Tech Information Technology student who loves writing clean code and solving hard problems. My journey started with Java and C++, and grew into a genuine interest in web development and building real, usable software.</p>
+<p class="canva-text mt-5 text-lg leading-8" data-template-id="about-copy-two">Outside of coursework, I practice DSA on platforms like LeetCode and Codeforces, build small projects, and explore new tools whenever I get the chance. I believe in learning by doing - every project I build and every bug I fix helps me become a better developer.</p>
+</div>
+<article class="canva-card glass-card intro-accent rounded-2xl p-7" data-template-id="education-card">
+<i class="text-blue-300" data-lucide="graduation-cap"></i>
+<h2 class="canva-text mt-5 text-xl font-bold" data-template-id="education-title">Education</h2>
+<p class="canva-text mt-4 whitespace-pre-line leading-7" data-template-id="education-copy">B.Tech, Information Technology
+(Currently Pursuing)
+
+Focus areas: Data Structures &amp; Algorithms, Java Programming, Web Development</p>
+</article>
+</div>
+<div class="mt-7 grid gap-5 md:grid-cols-3">
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="focus-card">
+<h2 class="canva-text font-bold" data-template-id="focus-title">Current Focus</h2>
+<p class="canva-text mt-4 leading-7" data-template-id="focus-copy">Strengthening my DSA fundamentals and building full-stack projects with modern web technologies.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="interest-card">
+<h2 class="canva-text font-bold" data-template-id="interest-title">Interests</h2>
+<p class="canva-text mt-4 leading-7" data-template-id="interest-copy">Competitive programming, backend development, cloud computing, and exploring AI-powered tools.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="approach-card">
+<h2 class="canva-text font-bold" data-template-id="approach-title">My Approach</h2>
+<p class="canva-text mt-4 leading-7" data-template-id="approach-copy">Build. Learn. Improve. I ship working code first, then refine it through feedback and iteration.</p>
+</article>
+</div>
+<div class="mt-12">
+<h2 class="canva-text text-2xl font-bold" data-template-id="journey-title">My Journey</h2>
+<div class="mt-6 grid gap-4 md:grid-cols-3">
+<div class="border-l-2 border-blue-400 pl-5">
+<p class="canva-text mono font-bold" data-template-id="journey-one-year">Year 1</p>
+<p class="canva-text mt-2" data-template-id="journey-one-copy">Started my B.Tech journey and learned the fundamentals of programming with C and Java.</p>
+</div>
+<div class="border-l-2 border-violet-400 pl-5">
+<p class="canva-text mono font-bold" data-template-id="journey-two-year">Year 2</p>
+<p class="canva-text mt-2" data-template-id="journey-two-copy">Deepened my knowledge of DSA and started building small web and Java-based projects.</p>
+</div>
+<div class="border-l-2 border-cyan-300 pl-5">
+<p class="canva-text mono font-bold" data-template-id="journey-three-year">Year 3</p>
+<p class="canva-text mt-2" data-template-id="journey-three-copy">Took on an internship, contributed to real-world projects, and started competitive programming seriously.</p>
+</div>
+</div>
+</div>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="skills" data-template-id="about-cta" type="button">Explore My Skills <i data-lucide="arrow-right"></i></button></div>
+</div>
+</section>
+<section aria-labelledby="skills-title" class="page-panel" id="skills">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="skills-kicker">What I work with</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="skills-title" id="skills-title">Skills</h1><p class="canva-text mt-4 text-xl" data-template-id="skills-subtitle">The languages, tools, and concepts I use to build things</p></div>
+<div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="programming-card">
+<i class="text-blue-300" data-lucide="code-2"></i>
+<h2 class="canva-text mt-5 text-xl font-bold" data-template-id="programming-title">Programming Languages</h2>
+<p class="canva-text mt-5 leading-8" data-template-id="programming-copy">Java, C++, C, and Python basics, comfortable writing efficient, well-structured code.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="web-card">
+<i class="text-violet-300" data-lucide="layout-template"></i>
+<h2 class="canva-text mt-5 text-xl font-bold" data-template-id="web-title">Web Development</h2>
+<p class="canva-text mt-5 leading-8" data-template-id="web-copy">HTML, CSS, JavaScript, and Bootstrap for building responsive, modern interfaces.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="tools-card">
+<i class="text-cyan-300" data-lucide="wrench"></i>
+<h2 class="canva-text mt-5 text-xl font-bold" data-template-id="tools-title">Tools &amp; Platforms</h2>
+<p class="canva-text mt-5 leading-8" data-template-id="tools-copy">Git &amp; GitHub, VS Code, AWS Cloud fundamentals, and the Linux command line.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="core-card">
+<i class="text-blue-300" data-lucide="brain-circuit"></i>
+<h2 class="canva-text mt-5 text-xl font-bold" data-template-id="core-title">Core Concepts</h2>
+<p class="canva-text mt-5 leading-8" data-template-id="core-copy">Data Structures &amp; Algorithms, Object-Oriented Programming, DBMS fundamentals, and problem-solving.</p>
+</article>
+</div>
+<article class="canva-card glass-card intro-accent mt-8 rounded-2xl p-7" data-template-id="learning-card">
+<h2 class="canva-text text-2xl font-bold" data-template-id="learning-title">Currently Learning</h2>
+<div class="mt-5 flex flex-wrap gap-3">
+<span class="canva-tag skill-pill rounded-full px-4 py-2" data-template-id="learning-java">Advanced Java</span><span class="canva-tag skill-pill rounded-full px-4 py-2" data-template-id="learning-dsa">Advanced DSA</span><span class="canva-tag skill-pill rounded-full px-4 py-2" data-template-id="learning-web">FDS</span><span class="canva-tag skill-pill rounded-full px-4 py-2" data-template-id="learning-ai">Projects</span>
+</div>
+</article>
+<div class="mt-10 text-center">
+<h2 class="canva-text text-2xl font-bold" data-template-id="philosophy-title">My Philosophy</h2>
+<p class="canva-text mono mt-4 text-lg" data-template-id="philosophy-copy">"Build. Learn. Improve."</p>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="projects" data-template-id="skills-cta" type="button">See My Projects <i data-lucide="arrow-right"></i></button></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="projects-title" class="page-panel" id="projects">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="projects-kicker">What I've built</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="projects-title" id="projects-title">Projects</h1><p class="canva-text mt-4 text-xl" data-template-id="projects-subtitle">A few things I've built while learning and experimenting</p></div>
+<div class="mt-10 grid gap-6 lg:grid-cols-2">
+<article class="canva-card glass-card rounded-2xl p-7 flex flex-col" data-template-id="project-medi-card">
+<p class="canva-text mono text-sm font-bold" data-template-id="medi-number">01</p>
+<h2 class="canva-text mt-3 text-2xl font-bold" data-template-id="medi-title">MediTrack — Medicine Reminder App</h2>
+<p class="canva-text mt-2 font-semibold" data-template-id="medi-type">Java Application</p>
+<p class="canva-text mt-5 leading-7" data-template-id="medi-copy">A desktop application that helps users track medicine schedules and get timely reminders, built to practice Java fundamentals and GUI design.</p><br>
+<a class="link-box mt-7 mt-auto" data-template-id="medi-link" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank">View on GitHub →</a>
+</article>
+<article class="canva-card glass-card rounded-2xl p-7 flex flex-col" data-template-id="project-ai-card">
+<p class="canva-text mono text-sm font-bold" data-template-id="ai-number">02</p>
+<h2 class="canva-text mt-3 text-2xl font-bold" data-template-id="ai-title">AI Chat Assistant</h2>
+<p class="canva-text mt-5 leading-7" data-template-id="ai-copy">A simple conversational assistant built to explore how AI APIs can be integrated into everyday applications.</p><br>
+<a class="link-box mt-7 mt-auto" data-template-id="ai-link" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank">View on GitHub →</a>
+</article>
+<article class="canva-card glass-card rounded-2xl p-7 flex flex-col" data-template-id="project-quick-card">
+<p class="canva-text mono text-sm font-bold" data-template-id="quick-number">03</p>
+<h2 class="canva-text mt-3 text-2xl font-bold" data-template-id="quick-title">QuickNotes — Notes Manager</h2>
+<p class="canva-text mt-2 font-semibold" data-template-id="quick-type">Web Application</p>
+<p class="canva-text mt-5 leading-7" data-template-id="quick-copy">A lightweight, responsive web app for creating and organizing notes quickly, focused on clean UI and usability.</p><br>
+<a class="link-box mt-7 mt-auto" data-template-id="quick-link" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank">View on GitHub →</a>
+</article>
+<article class="canva-card glass-card rounded-2xl p-7 flex flex-col" data-template-id="project-mine-card">
+<p class="canva-text mono text-sm font-bold" data-template-id="mine-number">04</p>
+<h2 class="canva-text mt-3 text-2xl font-bold" data-template-id="mine-title">DSA Problem Tracker</h2>
+<p class="canva-text mt-2 font-semibold" data-template-id="mine-type">Personal Tool</p>
+<p class="canva-text mt-5 leading-7" data-template-id="mine-copy">A personal tracker to log solved DSA problems across platforms, helping me stay consistent with practice.</p><br>
+<a class="link-box mt-7 mt-auto" data-template-id="mine-link" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank">View on GitHub →</a>
+</article>
+</div>
+<p class="canva-text mt-10 text-center italic" data-template-id="projects-more">More projects are on the way, check my GitHub for the latest work.</p>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="experience" type="button">See My Experience <i data-lucide="arrow-right"></i></button></div>
+</div>
+</section>
+<section aria-labelledby="experience-title" class="page-panel" id="experience">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="experience-kicker">Where I've worked</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="experience-title" id="experience-title">Experience</h1><p class="canva-text mt-4 text-xl" data-template-id="experience-subtitle">Hands-on work that shaped how I build software</p></div>
+<div class="mt-10">
+<article class="canva-card glass-card intro-accent w-full rounded-2xl p-7" data-template-id="internship-card">
+<p class="canva-text mono text-sm font-bold" data-template-id="internship-label">Internship</p>
+<h2 class="canva-text mt-3 text-2xl font-bold" data-template-id="internship-title">Software Development Intern</h2>
+<p class="canva-text mt-2 font-semibold" data-template-id="internship-role">Remote / On-site</p>
+<p class="canva-text mt-5 max-w-3xl leading-7" data-template-id="internship-copy">Worked on real development tasks, collaborated with a team using Git-based workflows, and gained exposure to writing production-quality code under deadlines.</p>
+</article>
+</div>
+<div class="mt-10 grid gap-5 md:grid-cols-3">
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="experience-web-card">
+<h2 class="canva-text font-bold" data-template-id="experience-web-title">Web Development</h2>
+<p class="canva-text mt-4" data-template-id="experience-web-copy">Built and styled responsive interfaces using HTML, CSS, and JavaScript.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="experience-problem-card">
+<h2 class="canva-text font-bold" data-template-id="experience-problem-title">Problem Solving</h2>
+<p class="canva-text mt-4" data-template-id="experience-problem-copy">Applied DSA concepts to solve real coding challenges efficiently.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="experience-real-card">
+<h2 class="canva-text font-bold" data-template-id="experience-real-title">Real-World Exposure</h2>
+<p class="canva-text mt-4" data-template-id="experience-real-copy">Learned how team workflows, code reviews, and version control work in practice.</p>
+</article>
+</div>
+<div class="mt-12">
+<h2 class="canva-text text-2xl font-bold" data-template-id="beyond-title">Beyond the Classroom</h2>
+<p class="canva-text mt-4" data-template-id="beyond-copy">I actively take part in coding contests, hackathons, and peer learning groups to keep growing outside of coursework.</p>
+<p class="canva-text mono mt-7 text-center text-sm sm:text-base" data-template-id="growth-path">Learning → Building → Shipping → Repeat</p>
+</div>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="certificates" data-template-id="experience-cta" type="button">See My Certificates <i data-lucide="arrow-right"></i></button></div>
+</div>
+</section>
+<section aria-labelledby="certificates-title" class="page-panel" id="certificates">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="certificates-kicker">Proof of learning</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="certificates-title" id="certificates-title">Certificates</h1><p class="canva-text mt-4 text-xl" data-template-id="certificates-subtitle">Courses and certifications I've completed</p></div>
+<div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
+<article class="canva-card glass-card overflow-hidden rounded-xl flex flex-col" data-template-id="cert-aws-card">
+<div class="canva-image certificate-placeholder h-32 w-full object-cover flex items-center justify-center text-4xl" data-template-id="cert-aws-image">☁️</div>
+<div class="p-5 flex flex-col flex-1">
+<h2 class="canva-text font-bold" data-template-id="cert-aws-title">AWS Cloud Fundamentals</h2>
+<p class="canva-text mt-3 text-sm leading-6" data-template-id="cert-aws-copy">Foundational certification covering core AWS cloud concepts and services.</p><br><a class="link-box mt-7 mt-auto" data-template-id="cert-aws-link" href="https://www.credly.com/" rel="noopener noreferrer" target="_blank">View Certificate →</a>
+</div>
+</article>
+<article class="canva-card glass-card overflow-hidden rounded-xl flex flex-col" data-template-id="cert-nptel-card">
+<div class="canva-image certificate-placeholder h-32 w-full object-cover flex items-center justify-center text-4xl" data-template-id="cert-nptel-image">📘</div>
+<div class="p-5 flex flex-col flex-1">
+<h2 class="canva-text font-bold" data-template-id="cert-nptel-title">NPTEL Course Certification</h2>
+<p class="canva-text mt-3 text-sm leading-6" data-template-id="cert-nptel-copy">Completed a certified course through NPTEL as part of continuous learning.</p><br><a class="link-box mt-7 mt-auto" data-template-id="cert-nptel-link" href="https://nptel.ac.in/" rel="noopener noreferrer" target="_blank">View Certificate →</a>
+</div>
+</article>
+<article class="canva-card glass-card overflow-hidden rounded-xl flex flex-col" data-template-id="cert-simple-card">
+<div class="canva-image certificate-placeholder h-32 w-full object-cover flex items-center justify-center text-4xl" data-template-id="cert-simple-image">🎯</div>
+<div class="p-5 flex flex-col flex-1">
+<h2 class="canva-text font-bold" data-template-id="cert-simple-title">Simplilearn Certification</h2>
+<p class="canva-text mt-3 text-sm leading-6" data-template-id="cert-simple-copy">Completed a professional skill-building course via Simplilearn.</p><br><a class="link-box mt-7 mt-auto" data-template-id="cert-simple-link" href="https://www.simplilearn.com/" rel="noopener noreferrer" target="_blank">View Certificate →</a>
+</div>
+</article>
+<article class="canva-card glass-card overflow-hidden rounded-xl flex flex-col" data-template-id="cert-be10x-card">
+<div class="canva-image certificate-placeholder h-32 w-full object-cover flex items-center justify-center text-4xl" data-template-id="cert-be10x-image">⚡</div>
+<div class="p-5 flex flex-col flex-1">
+<h2 class="canva-text font-bold" data-template-id="cert-be10x-title">Be10x Workshop Certificate</h2>
+<p class="canva-text mt-3 text-sm leading-6" data-template-id="cert-be10x-copy">Completed a hands-on workshop focused on practical productivity and AI tools.</p><br><a class="link-box mt-7 mt-auto" data-template-id="cert-be10x-link" href="https://be10x.in/" rel="noopener noreferrer" target="_blank">View Certificate →</a>
+</div>
+</article>
+<article class="canva-card glass-card overflow-hidden rounded-xl flex flex-col" data-template-id="cert-hack-card">
+<div class="canva-image certificate-placeholder h-32 w-full object-cover flex items-center justify-center text-4xl" data-template-id="cert-hack-image">🏅</div>
+<div class="p-5 flex flex-col flex-1">
+<h2 class="canva-text font-bold" data-template-id="cert-hack-title">Hackathon Participation</h2>
+<p class="canva-text mt-3 text-sm leading-6" data-template-id="cert-hack-copy">Participated in a coding hackathon, building a working prototype within a limited time.</p><br><button class="link-box mt-7 mt-auto" data-page="contact" data-template-id="cert-hack-link" type="button">Get in Touch</button>
+</div>
+</article>
+</div>
+<div class="mt-12 text-center">
+<h2 class="canva-text text-2xl font-bold" data-template-id="cert-learning-title">Always Learning</h2>
+<p class="canva-text mx-auto mt-4 max-w-2xl" data-template-id="cert-learning-copy">I regularly take up new courses and workshops to stay current with the tools and technologies shaping software development.</p>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="achievements" type="button">See My Achievements <i data-lucide="arrow-right"></i></button></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="achievements-title" class="page-panel" id="achievements">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="achievements-kicker">Milestones</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="achievements-title" id="achievements-title">Achievements</h1><p class="canva-text mt-4 text-xl" data-template-id="achievements-subtitle">A few things I'm proud of along the way</p></div>
+<div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="achievement-one-card">
+<span>🏆</span>
+<h2 class="canva-text mt-4 font-bold" data-template-id="achievement-one-title">Coding Contest Recognition</h2>
+<p class="canva-text mt-3 leading-6" data-template-id="achievement-one-copy">Recognized for strong performance in a coding contest during college.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="achievement-two-card">
+<span>💻</span>
+<h2 class="canva-text mt-4 font-bold" data-template-id="achievement-two-title">200+ DSA Problems Solved</h2>
+<p class="canva-text mt-3 leading-6" data-template-id="achievement-two-copy">Consistently solving problems on LeetCode and Codeforces to sharpen problem-solving skills.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="achievement-three-card">
+<span>☁️</span>
+<h2 class="canva-text mt-4 font-bold" data-template-id="achievement-three-title">Cloud Fundamentals Certified</h2>
+<p class="canva-text mt-3 leading-6" data-template-id="achievement-three-copy">Completed a foundational certification in cloud computing concepts.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="achievement-four-card">
+<span>🚀</span>
+<h2 class="canva-text mt-4 font-bold" data-template-id="achievement-four-title">Hackathon Participant</h2>
+<p class="canva-text mt-3 leading-6" data-template-id="achievement-four-copy">Built and presented a working prototype under time pressure at a hackathon.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="achievement-five-card">
+<span>🤝</span>
+<h2 class="canva-text mt-4 font-bold" data-template-id="achievement-five-title">Team Collaboration</h2>
+<p class="canva-text mt-3 leading-6" data-template-id="achievement-five-copy">Contributed effectively to team projects using Git-based collaborative workflows.</p>
+</article>
+<article class="canva-card glass-card rounded-xl p-6" data-template-id="achievement-six-card">
+<span>📚</span>
+<h2 class="canva-text mt-4 font-bold" data-template-id="achievement-six-title">Continuous Learner</h2>
+<p class="canva-text mt-3 leading-6" data-template-id="achievement-six-copy">Completed multiple certifications and workshops to keep expanding my skill set.</p>
+</article>
+</div>
+<div class="mt-12 text-center">
+<p class="canva-text mono whitespace-pre-line text-lg leading-9" data-template-id="achievement-path">Learn → Practice → Build → Achieve</p>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="profiles" data-template-id="achievements-cta" type="button">Check My Profiles <i data-lucide="arrow-right"></i></button></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="profiles-title" class="page-panel" id="profiles">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="profiles-kicker">Find me online</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="profiles-title" id="profiles-title">Profiles</h1><p class="canva-text mt-4 text-xl" data-template-id="profiles-subtitle">Where you can see my work and progress</p></div>
+<div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+<article class="canva-card glass-card rounded-xl p-6 flex flex-col" data-template-id="github-card">
+<i class="text-blue-200" data-lucide="github"></i>
+<h2 class="canva-text mt-5 font-bold" data-template-id="github-title">GitHub</h2>
+<p class="canva-text mt-2" data-template-id="github-user">@S-Selvakumar</p>
+<p class="canva-text mt-4 text-sm leading-6" data-template-id="github-copy">Check out my repositories and open-source contributions.</p><br><a class="link-box mt-7 mt-auto" data-template-id="github-link" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank">Visit Profile →</a>
+</article>
+<article class="canva-card glass-card rounded-xl p-6 flex flex-col" data-template-id="leetcode-card">
+<i class="text-violet-200" data-lucide="braces"></i>
+<h2 class="canva-text mt-5 font-bold" data-template-id="leetcode-title">LeetCode</h2>
+<p class="canva-text mt-2" data-template-id="leetcode-user">Problem Solver</p>
+<p class="canva-text mt-4 text-sm leading-6" data-template-id="leetcode-copy">Practicing and solving DSA problems consistently.</p><br><a class="link-box mt-7 mt-auto" data-template-id="leetcode-link" href="https://leetcode.com/u/s-selvakumar/" rel="noopener noreferrer" target="_blank">Visit Profile →</a>
+</article>
+<article class="canva-card glass-card rounded-xl p-6 flex flex-col" data-template-id="codeforces-card">
+<i class="text-cyan-200" data-lucide="binary"></i>
+<h2 class="canva-text mt-5 font-bold" data-template-id="codeforces-title">Codeforces</h2>
+<p class="canva-text mt-2" data-template-id="codeforces-user">@selvakumar03</p>
+<p class="canva-text mt-4 text-sm leading-6" data-template-id="codeforces-copy">Participating in competitive programming contests.</p><br><a class="link-box mt-7 mt-auto" data-template-id="codeforces-link" href="https://codeforces.com/profile/selvakumar03" rel="noopener noreferrer" target="_blank">Visit Profile →</a>
+</article>
+<article class="canva-card glass-card rounded-xl p-6 flex flex-col" data-template-id="codolio-card">
+<i class="text-blue-200" data-lucide="chart-no-axes-combined"></i>
+<h2 class="canva-text mt-5 font-bold" data-template-id="codolio-title">Codolio</h2>
+<p class="canva-text mt-2" data-template-id="codolio-user">Coding Profile</p>
+<p class="canva-text mt-4 text-sm leading-6" data-template-id="codolio-copy">A consolidated view of my coding activity across platforms.</p><br><a class="link-box mt-7 mt-auto" data-template-id="codolio-link" href="https://codolio.com/profile/S.Selvakumar" rel="noopener noreferrer" target="_blank">Visit Profile →</a>
+</article>
+</div>
+<div class="mt-14 text-center">
+<h2 class="canva-text text-3xl font-bold" data-template-id="profiles-cta-title">Let's Connect</h2>
+<p class="canva-text mono mt-5 text-xl" data-template-id="profiles-code-art">if (youWantToCollaborate) { reachOut(); }</p>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="contact" type="button">Get In Touch <i data-lucide="arrow-right"></i></button></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="contact-title" class="page-panel" id="contact">
+<div class="mx-auto max-w-7xl px-5 py-16 lg:px-8">
+<div class="hud-box"><p class="canva-text mono text-sm font-bold tracking-[.18em]" data-template-id="contact-kicker">Get in touch</p><h1 class="canva-text gradient-text mt-3 text-5xl font-bold" data-template-id="contact-title" id="contact-title">Contact Me</h1><p class="canva-text mt-4 text-xl" data-template-id="contact-subtitle">Have an opportunity or just want to say hi?</p></div>
+<div class="canva-panel mt-10 rounded-2xl p-5 sm:p-7" data-template-id="contact-panel">
+<div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
+<div>
+<h2 class="canva-text text-3xl font-bold" data-template-id="contact-touch-title">Let's Talk</h2>
+<p class="canva-text mt-5 text-lg leading-8" data-template-id="contact-touch-copy">Whether it's an internship opportunity, a project collaboration, or just a question, I'd love to hear from you. Reach out through the form or any of the links below.</p>
+<div class="mt-8 flex flex-col gap-3">
+<a class="pill-link" href="https://www.google.com/maps/search/?api=1&query=Chettikulam%2C+Perambalur%2C+Tamil+Nadu" target="_blank" rel="noopener noreferrer"><span class="pill-icon" style="background:#ef4444"><i data-lucide="map-pin"></i></span>Chettikulam, Perambalur,<br> Tamil Nadu</a>
+<a class="pill-link" data-template-id="contact-email-display" href="mailto:selvasakthi2138@gmail.com"><span class="pill-icon" style="background:#00f0ff"><i data-lucide="mail" style="color:#05070f"></i></span>selvasakthi2138@gmail.com</a>
+<a class="pill-link" href="tel:1234567890"><span class="pill-icon" style="background:#22c55e"><i data-lucide="phone"></i></span>1234567890</a>
+<a class="pill-link" data-template-id="contact-linkedin-display" href="https://www.linkedin.com/in/s-selvakumar" rel="noopener noreferrer" target="_blank"><span class="pill-icon" style="background:#0a66c2"><i data-lucide="linkedin"></i></span>linkedin: s-selvakumar</a>
+<a class="pill-link" data-template-id="contact-github-display" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank"><span class="pill-icon" style="background:#24292f"><i data-lucide="github"></i></span>GitHub: S-Selvakumar</a>
+<a class="pill-link" href="https://x.com/selvakumars03" rel="noopener noreferrer" target="_blank"><span class="pill-icon" style="background:#000000"><i data-lucide="twitter"></i></span>X : @selvakumars03</a>
+</div>
+</div>
+<form class="rounded-xl border border-white/10 bg-[#081027]/70 p-5 sm:p-6" id="contact-form" style="align-self:start">
+<div class="mb-5">
+<label class="canva-text mb-2 block font-semibold" data-template-id="contact-name-label" for="contact-name">Your Name</label><input class="w-full rounded-lg border border-slate-700 bg-[#0a122a] px-4 py-3 text-slate-100 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20" id="contact-name" name="name" required="" type="text"/>
+</div>
+<div class="mb-5">
+<label class="canva-text mb-2 block font-semibold" data-template-id="contact-email-label" for="contact-email">Your Email</label><input class="w-full rounded-lg border border-slate-700 bg-[#0a122a] px-4 py-3 text-slate-100 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20" id="contact-email" name="email" required="" type="email"/>
+</div>
+<div class="mb-6">
+<label class="canva-text mb-2 block font-semibold" data-template-id="contact-message-label" for="contact-message">Your Message</label><textarea class="w-full resize-none rounded-lg border border-slate-700 bg-[#0a122a] px-4 py-3 text-slate-100 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-400/20" id="contact-message" name="message" required="" rows="5"></textarea>
+</div><button class="page-nav-btn" data-template-id="contact-submit" type="submit">Send Message <i data-lucide="arrow-right"></i></button>
+<p aria-live="polite" class="mt-4 min-h-6 text-sm" id="form-status"></p>
+<p class="canva-text mono mt-6 text-sm" style="color:var(--neon-cyan)">await sendMessage(); <span style="color:#a9b4cf">// I'll reply within 24 hours</span></p>
+</form>
+</div>
+</div>
+<div class="mt-12 text-center">
+<h2 class="canva-text text-3xl font-bold" data-template-id="contact-final-title">Ready to Build Something Great?</h2>
+<p class="canva-text mx-auto mt-4 max-w-2xl" data-template-id="contact-final-copy">I'm always excited to connect with fellow developers, mentors, and recruiters. Let's create something meaningful together.</p>
+<div class="page-nav-wrap"><button class="page-nav-btn" data-page="home" type="button"><i data-lucide="arrow-left"></i> Back to Home</button></div>
+<div class="mt-7 flex justify-center gap-5">
+<a class="page-nav-btn" data-template-id="contact-github-button" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank">GitHub <i data-lucide="arrow-right"></i></a><a class="page-nav-btn" data-template-id="contact-linkedin-button" href="https://www.linkedin.com/in/s-selvakumar" rel="noopener noreferrer" target="_blank">LinkedIn <i data-lucide="arrow-right"></i></a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-white/10">
+<div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-10 text-center lg:flex-row lg:items-center lg:justify-between lg:px-8 lg:text-left">
+<div>
+<p class="canva-text brand-font font-bold" data-template-id="footer-name">Selvakumar S</p>
+<p class="canva-text mt-2 text-sm" data-template-id="footer-role">B.Tech IT Student | Java • DSA • Web Development</p>
+</div>
+<div class="flex flex-wrap justify-center gap-4 text-sm">
+<a class="link-box" data-template-id="footer-github" href="https://github.com/S-Selvakumar" rel="noopener noreferrer" target="_blank">GitHub</a><a class="link-box" data-template-id="footer-linkedin" href="https://www.linkedin.com/in/s-selvakumar" rel="noopener noreferrer" target="_blank">LinkedIn</a><a class="link-box" data-template-id="footer-leetcode" href="https://leetcode.com/u/s-selvakumar/" rel="noopener noreferrer" target="_blank">LeetCode</a><a class="link-box" data-template-id="footer-codolio" href="https://codolio.com/profile/S.Selvakumar" rel="noopener noreferrer" target="_blank">Codolio</a>
+</div>
+<p class="canva-text text-sm" data-template-id="footer-copyright">© 2026 <span class="brand-font">Selvakumar S</span>. All rights reserved.</p>
+</div>
+</footer>
+</div>
+<script>
+    const navLinks=document.getElementById("nav-links"),menuToggle=document.getElementById("menu-toggle");
+    function showPage(page){
+      document.querySelectorAll(".page-panel").forEach(panel=>panel.classList.toggle("active",panel.id===page));
+      document.querySelectorAll("[data-page]").forEach(item=>item.classList.toggle("active",item.dataset.page===page&&item.dataset.templateId!=="nav-brand"));
+      navLinks.classList.add("hidden"); menuToggle.setAttribute("aria-expanded","false"); window.scrollTo({top:0,behavior:"smooth"});
+    }
+    document.querySelectorAll("[data-page]").forEach(button=>button.addEventListener("click",()=>showPage(button.dataset.page)));
+    menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("hidden");menuToggle.setAttribute("aria-expanded",String(!open));});
+    const status=document.getElementById("form-status"),form=document.getElementById("contact-form");
+    // Contact form: opens the visitor's email client with a pre-filled message.
+    const CONTACT_EMAIL="selvasakthi2138@gmail.com";
+    form.addEventListener("submit",(event)=>{
+      event.preventDefault();
+      const data=new FormData(form);
+      const name=String(data.get("name")).trim(),email=String(data.get("email")).trim(),message=String(data.get("message")).trim();
+      const subject=encodeURIComponent(`Portfolio contact from ${name}`);
+      const body=encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+      window.location.href=`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      status.textContent="Opening your email app to send the message...";
+      status.className="mt-4 min-h-6 text-sm text-emerald-300";
+      form.reset();
+    });
+    document.addEventListener("DOMContentLoaded",()=>{lucide.createIcons();});
+  </script>
+</body>
+</html>
